@@ -3,10 +3,8 @@
     date: 2022-08-22
     describe: 微信测试号推送消息
 */
-const getToken = require('./getToken')
 const {syncRequest} = require('../utils/request')
-module.exports.sendMessage = function(user_id, template_id, data) {
-    const token = getToken()
+module.exports.sendMessage = function(token, user_id, template_id, data) {
     let reqJson = {
         touser: user_id,
         template_id: template_id,
