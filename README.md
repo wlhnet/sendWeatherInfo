@@ -21,14 +21,14 @@ node ./index.js
 
 ![image-20220823022016418](https://user-images.githubusercontent.com/40430808/185993348-1a09235f-5b59-4e7c-b3f8-775e14120e4c.png)
 
-如果您在本地，或自己的服务器等非所有人能访问的平台，可直接把信息写入`config.js`文件中。
+**1、如果您在本地，或自己的服务器等非所有人能访问的平台，可直接把信息写入`config.js`文件中。**
 
-并在`index.js`文件中通过`const config = require('./config')`导入
+     并在`index.js`文件中通过`const config = require('./config')`导入
 
 ![image-20220823022804051](https://user-images.githubusercontent.com/40430808/185993428-0dcf8614-8d29-469c-b14a-fe5e0b3a74e9.png)
 
 
-如果您在github actions上运行，建议将信息放入github机密中，如图：
+**2、如果您在github actions上运行，建议将信息放入github机密中，如图：**
 
 ![image-20220823022408004](https://user-images.githubusercontent.com/40430808/185993537-01997e4a-9563-402c-95ab-3725220b1a9c.png)
 
