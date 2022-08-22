@@ -21,7 +21,7 @@ node ./index.js
 
 ![image-20220823022016418](https://user-images.githubusercontent.com/40430808/185993348-1a09235f-5b59-4e7c-b3f8-775e14120e4c.png)
 
-**1、如果您在本地，或自己的服务器等非所有人能访问的平台，可直接把信息写入`config.js`文件中。**
+**1、如果您在本地，或自己的服务器，或云函数平台等非所有人能访问的平台，可直接把信息写入`config.js`文件中。**
 
      并在`index.js`文件中通过`const config = require('./config')`导入
 
