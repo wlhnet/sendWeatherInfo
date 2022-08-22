@@ -4,6 +4,7 @@
     describe: 微信测试号推送消息
 */
 const { sendMessage } = require('./wx/index')
+const { getToken } = require('./wx/getToken')
 const config = require('./config')
 
 // 导入所需方法
