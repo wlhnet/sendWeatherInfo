@@ -1,3 +1,4 @@
+# 该文件用来在 github actions 中自动运行脚本
 name: Send messages regularly
  
 on:
@@ -23,7 +24,7 @@ jobs:
           npm install xmlhttprequest     
           node ./index.js  # 要运行的js脚本，放在根目录下
           
-          # 读取Actions secrets保存的信息
+        # 读取Actions secrets保存的信息
         env:
           APP_ID: ${{ secrets.APP_ID }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
