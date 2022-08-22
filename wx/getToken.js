@@ -3,9 +3,8 @@
     date: 2022-08-22
     describe: 微信测试号推送消息
 */
-const {APP_ID, APP_SECRET} = require('../config')
 const {syncRequest} = require('../utils/request')
-module.exports = function() {
+module.exports.getToken = function(APP_ID, APP_SECRET) {
     const getUrl = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APP_ID}&secret=${APP_SECRET}`
     let access_token = syncRequest(getUrl, 'get')
     return access_token.access_token
