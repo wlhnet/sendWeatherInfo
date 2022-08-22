@@ -1,31 +1,24 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
-
+name: Send messages regularly
+ 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - main
+  schedule:   
+    - cron: '0 9 * * *'   # 定时运行的时间，国际标准时间，北京时间要+8
+ 
 jobs:
-  build:
-
+  run-coupons: # 任务名
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    # - run: npm install xmlhttprequest
-    # - run: node ./index.js
-    
+      - uses: actions/checkout@main  #采用main分支下的
+           
+      - name: Setup Node.js
+        uses: actions/setup-node@v2  #安装node.js
+        with:
+          node-version: '16'
+          
+      - name: Install Dependency       
+        run: |
+          npm install xmlhttprequest     
+          node ./index.js  # 要运行的js脚本，放在根目录下
