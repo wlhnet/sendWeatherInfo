@@ -23,6 +23,9 @@ const city = config.CITY
 const birthday1 = config.BIRTHDAY1
 const birthday2 = config.BIRTHDAY2
 
+const app_id = config.APP_ID
+const app_secret = config.APP_SECRET
+
 const user_id = config.USER_ID
 const template_id = config.TEMPLATE_ID
 
@@ -69,8 +72,11 @@ let templateData = {
      }
 }
 // console.log(templateData)
-// 推送主函数
-sendMessage(user_id, template_id, templateData)
+
+// 1、一定要先获取token再执行sendMessage
+const token = getToken(app_id, app_secret)
+// 2、推送主函数
+sendMessage(token, user_id, template_id, templateData)
 
 
 /* 模板：
