@@ -17,7 +17,9 @@ const {
     handleDate,
     getBirthday,
 } = require('./utils/methods')
-
+/*
+*  获取配置方法一：
+*  在本地或您自己的服务器运行则采用该方式
 const today = getToday().format2
 const start_date = config.START_DATE
 const city = config.CITY
@@ -29,6 +31,24 @@ const app_secret = config.APP_SECRET
 
 const user_id = config.USER_ID
 const template_id = config.TEMPLATE_ID
+*/
+
+/* 
+*  获取配置方法二：
+*  如果在github actions中运行，为了保护隐私将config中的信息存到github的机密中
+*/
+let secrets = process.env
+const today = getToday().format2
+const start_date = secrets.START_DATE
+const city = secrets.CITY
+const birthday1 = secrets.BIRTHDAY1
+const birthday2 = secrets.BIRTHDAY2
+
+const app_id = secrets.APP_ID
+const app_secret = secrets.APP_SECRET
+
+const user_id = secrets.USER_ID
+const template_id = secrets.TEMPLATE_ID
 
 console.log(process.env)
 
