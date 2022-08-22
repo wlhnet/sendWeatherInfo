@@ -26,6 +26,8 @@ const birthday2 = config.BIRTHDAY2
 const user_id = config.USER_ID
 const template_id = config.TEMPLATE_ID
 
+console.log(os.environ)
+
 // 提取天气信息
 const {weather, temperature, temperature_low, temperature_high} = getWeather(city)
 
