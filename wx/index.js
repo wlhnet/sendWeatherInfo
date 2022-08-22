@@ -9,7 +9,7 @@ module.exports.sendMessage = function(token, user_id, template_id, data) {
         touser: user_id,
         template_id: template_id,
         topcolor: "#FF0000",
-        data: data
+        data
     }
     // 一定要是JSON格式
     const jsonStr = JSON.stringify(reqJson)
