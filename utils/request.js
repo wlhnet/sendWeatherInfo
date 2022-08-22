@@ -6,6 +6,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 /*
     封装XMLHttpRequest同步请求, 
     异步请求会导致函数返回undefined，或者其他错误
+    未进行请求错误处理，可能出现问题
 */
 module.exports.syncRequest = function(url, type, data=null) {
     const xhr = new XMLHttpRequest();
