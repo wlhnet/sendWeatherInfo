@@ -37,3 +37,5 @@ node ./index.js
 ```
 
 ![image-20220823022535118](https://user-images.githubusercontent.com/40430808/185993568-bf900b04-d530-4c36-be3f-75cfdb6a4fb1.png)
+
+#### 如需添加模板字段，请在`utils/methods.js`编写对应方法导入`index.js`主文件
