@@ -19,7 +19,7 @@ exports.getWeek = function() {
     return `星期${weekArr[week]}`
 }
 
-// 请求随机语录 (type: String)
+// 请求随机语录-彩虹屁 (type: String)
 exports.getWords = function() {
     let res = syncRequest("https://api.shadiao.pro/chp", 'get')
     return res.data.text
@@ -49,7 +49,8 @@ exports.getRandomColor = function() {
 }
 
 // 返回现在距离指定时间的天数 (type: Number)
-exports.handleDate = function(startDateStr, endDateStr) {
+exports.handleDate = function(startDateStr, startDateStr) {
+    // startDateStr、startDateStr格式为："xxxx-xx-xx"
     if(startDateStr && endDateStr) {
         let separator = "-" //日期分隔符
         let startArr = startDateStr.substring(0, 10).split(separator)
@@ -64,7 +65,7 @@ exports.handleDate = function(startDateStr, endDateStr) {
 exports.getBirthday = function(birthday) {
     let nowDay = new Date(Date.now()) // 当前时间戳
     let nowYear = new Date(Date.now()).getFullYear() // 当前年份
-    let birth = nowYear + '-' + birthday
+    let birth = nowYear + '-' + birthday // 生日："xx-xx"
     if(birthday && nowDay) {
         let separator = "-";
         let birthArr = birth.substring(0, 10).split(separator)
