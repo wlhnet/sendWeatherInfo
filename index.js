@@ -50,7 +50,7 @@ const app_secret = secrets.APP_SECRET
 const user_id = secrets.USER_ID
 const template_id = secrets.TEMPLATE_ID
 
-console.log(process.env)
+
 
 // 提取天气信息
 const {weather, temperature, temperature_low, temperature_high} = getWeather(city)
