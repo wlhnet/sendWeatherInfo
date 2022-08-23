@@ -37,7 +37,7 @@ const template_id = config.TEMPLATE_ID
 *  获取配置方法二：
 *  如果在github actions中运行，为了保护隐私将config中的信息存到github的机密中
 */
-let secrets = process.env
+let secrets = process.env // 获取github中机密(secrets)对象
 const today = getToday().format2
 const start_date = secrets.START_DATE
 const city = secrets.CITY
