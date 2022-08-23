@@ -1,3 +1,4 @@
+// 导入请求方法
 const { syncRequest } = require('./request')
 
 // 返回今天的年月日 (type: Object)
