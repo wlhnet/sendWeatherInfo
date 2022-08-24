@@ -49,8 +49,8 @@ exports.getRandomColor = function() {
 }
 
 // 返回现在距离指定时间的天数 (type: Number)
-exports.handleDate = function(startDateStr, startDateStr) {
-    // startDateStr、startDateStr格式为："xxxx-xx-xx"
+exports.handleDate = function(startDateStr, endDateStr) {
+    // startDateStr、endDateStr："xxxx-xx-xx"
     if(startDateStr && endDateStr) {
         let separator = "-" //日期分隔符
         let startArr = startDateStr.substring(0, 10).split(separator)
