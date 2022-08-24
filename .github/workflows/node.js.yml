@@ -4,7 +4,7 @@ name: Send messages regularly
 on:
   schedule:
   # 定时运行的时间，国际标准时间，北京时间要+8
-  - cron:  '48 2 * * *'
+  - cron:  '30 21 * * *'
   workflow_dispatch: 
  
 jobs:
