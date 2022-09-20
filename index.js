@@ -5,7 +5,7 @@
 */
 const { sendMessage } = require('./wx/index')
 const { getToken } = require('./wx/getToken')
-const config = require('./config')
+const config = require('./config') // 获取config.js文件中的对象
 const secrets = process.env // 获取github中机密(secrets)对象
 
 // 导入所需方法
@@ -37,7 +37,6 @@ const app_secret = config.FLAG ? config.APP_SECRET : secrets.APP_SECRET
 
 const user_id = config.FLAG ? config.USER_ID : secrets.USER_ID
 const template_id = config.FLAG ? config.TEMPLATE_ID : secrets.TEMPLATE_ID
-
 
 // 提取天气信息
 const {weather, temperature, temperature_low, temperature_high} = getWeather(city)
