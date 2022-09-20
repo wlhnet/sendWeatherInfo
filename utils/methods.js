@@ -62,18 +62,23 @@ exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11
 }
 
 // 返回距离生日天数 (return type: Number)
-exports.getBirthday = function(birthday = '11-01') {
-    let nowDay = new Date(Date.now()) // 当前时间戳
-    let nowYear = new Date(Date.now()).getFullYear() // 当前年份
-    let birth = nowYear + '-' + birthday // 生日："xx-xx"
-    if(birthday && nowDay) {
+let getBirthday = function (birthday = "11-01", isLunar = false) {
+    let nowDay = new Date(Date.now()); // 当前时间戳
+    let nowYear = new Date(Date.now()).getFullYear(); // 当前年份
+    let solar = lunarTOsolar(nowYear, birthday.split('-')[0], birthday.split('-')[1] ) // 将农历生日转成当前年份农历对应的公历日期
+    let solarStr = nowYear + "-" + solar.cMonth + "-" + solar.cDay // "xxxx-xx-xx"
+    let birth = isLunar ? solarStr : nowYear + "-" + birthday; // birth: "xxxx-xx-xx"
+
+    if (birthday && nowDay) {
         let separator = "-";
-        let birthArr = birth.substring(0, 10).split(separator)
-        let birthTime = new Date(birthArr[0], birthArr[1]-1, birthArr[2])
+        let birthArr = birth.substring(0, 10).split(separator);
+        let birthTime = new Date(birthArr[0], birthArr[1] - 1, birthArr[2]);
+        let result = parseInt(Math.abs(birthTime - nowDay) / (1000 * 60 * 60 * 24));
         // 生日没过
-        if(birthTime - nowDay > 0 ) return parseInt(Math.abs(birthTime-nowDay) / (1000 * 60 * 60 * 24))
+        if (birthTime - nowDay > 0)  return result > 0 ? result : '不足1';
         // 生日过了
-        birthTime = new Date(birthArr[0] + 1, birthArr[1]-1, birthArr[2])
-        return parseInt(Math.abs(birthTime-nowDay) / (1000 * 60 * 60 * 24))
-    } 
-}
+        birthTime = new Date(birthArr[0] + 1, birthArr[1] - 1, birthArr[2]);
+        result = parseInt(Math.abs(birthTime - nowDay) / (1000 * 60 * 60 * 24));
+        return result > 0 ? result : '不足1' ;
+    }
+};
