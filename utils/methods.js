@@ -1,5 +1,7 @@
 // 导入请求方法
 const { syncRequest } = require('./request')
+// 导入公历、农历互转方法
+const { solarTOlunar, lunarTOsolar } =  require('./calendarFormat')
 
 // 返回今天的年月日 (return type: Object)
 exports.getToday = function() {
