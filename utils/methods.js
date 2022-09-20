@@ -66,6 +66,11 @@ exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11
 // 返回距离生日天数 (return type: Number)
 // isLunar 是否为农历生日，默认值：false
 exports.getBirthday = function (birthday = "11-01", isLunar = false) {
+    // 根据 birthday 参数确定是否为农历生日
+    if (birthday.split('/')[1]) {
+        birthday = birthday.split('/')[1];
+        isLunar = true;
+    }
     let nowDay = new Date(Date.now()); // 当前时间戳
     let nowYear = new Date(Date.now()).getFullYear(); // 当前年份
     let solar = lunarTOsolar(nowYear, birthday.split('-')[0], birthday.split('-')[1] ) // 将农历生日转成当前年份农历对应的公历日期
