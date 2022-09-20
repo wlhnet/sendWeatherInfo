@@ -62,6 +62,7 @@ exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11
 }
 
 // 返回距离生日天数 (return type: Number)
+// isLunar 是否为农历生日，默认值：false
 let getBirthday = function (birthday = "11-01", isLunar = false) {
     let nowDay = new Date(Date.now()); // 当前时间戳
     let nowYear = new Date(Date.now()).getFullYear(); // 当前年份
