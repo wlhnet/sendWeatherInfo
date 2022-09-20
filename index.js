@@ -6,6 +6,7 @@
 const { sendMessage } = require('./wx/index')
 const { getToken } = require('./wx/getToken')
 const config = require('./config')
+const secrets = process.env // 获取github中机密(secrets)对象
 
 // 导入所需方法
 const { 
@@ -17,39 +18,25 @@ const {
     handleDate,
     getBirthday,
 } = require('./utils/methods')
+
 /*
 *  获取配置方法一：
-*  在本地或您自己的服务器运行则采用该方式
-const today = getToday().format2
-const start_date = config.START_DATE
-const city = config.CITY
-const birthday1 = config.BIRTHDAY1
-const birthday2 = config.BIRTHDAY2
-
-const app_id = config.APP_ID
-const app_secret = config.APP_SECRET
-
-const user_id = config.USER_ID
-const template_id = config.TEMPLATE_ID
-*/
-
-/* 
+*  在本地或您自己的服务器运行则采用该方式(当 config.FLAG 为 true 时)
+*
 *  获取配置方法二：
-*  如果在github actions中运行，为了保护隐私将config中的信息存到github的机密中
+*  如果在github actions中运行，为了保护隐私将config中的信息存到github的机密中(当 config.FLAG 为 false 时)
 */
-let secrets = process.env // 获取github中机密(secrets)对象
 const today = getToday().format2
-const start_date = secrets.START_DATE
-const city = secrets.CITY
-const birthday1 = secrets.BIRTHDAY1
-const birthday2 = secrets.BIRTHDAY2
+const start_date = config.FLAG ? config.START_DATE : secrets.START_DATE
+const city = config.FLAG ? config.CITY : secrets.CITY
+const birthday1 = config.FLAG ? config.BIRTHDAY1 : secrets.BIRTHDAY1
+const birthday2 = config.FLAG ? config.BIRTHDAY2 : secrets.BIRTHDAY2
 
-const app_id = secrets.APP_ID
-const app_secret = secrets.APP_SECRET
+const app_id = config.FLAG ? config.APP_ID : secrets.APP_ID
+const app_secret = config.FLAG ? config.APP_SECRET : secrets.APP_SECRET
 
-const user_id = secrets.USER_ID
-const template_id = secrets.TEMPLATE_ID
-
+const user_id = config.FLAG ? config.USER_ID : secrets.USER_ID
+const template_id = config.FLAG ? config.TEMPLATE_ID : secrets.TEMPLATE_ID
 
 
 // 提取天气信息
@@ -114,6 +101,6 @@ sendMessage(token, user_id, template_id, templateData)
 Ｏ(≧▽≦)Ｏ
 {{words.DATA}}
  
-模板说明文档：
+微信官方模板说明文档：
 https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Template_Message_Interface.html
  */
