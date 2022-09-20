@@ -26,7 +26,7 @@ exports.getWords = function() {
 }
 
 // 请求天气信息 (type: Object)
-exports.getWeather = function(city) {
+exports.getWeather = function(city = '长沙') {
     const cityURI =encodeURI(city); //city为中文需要转义
     let reqUrl = `https://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=${cityURI}`
     let {data} = syncRequest(reqUrl, 'get')
@@ -49,7 +49,7 @@ exports.getRandomColor = function() {
 }
 
 // 返回现在距离指定时间的天数 (type: Number)
-exports.handleDate = function(startDateStr, endDateStr) {
+exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11-01') {
     // startDateStr、endDateStr："xxxx-xx-xx"
     if(startDateStr && endDateStr) {
         let separator = "-" //日期分隔符
@@ -62,7 +62,7 @@ exports.handleDate = function(startDateStr, endDateStr) {
 }
 
 // 返回距离生日天数 (type: Number)
-exports.getBirthday = function(birthday) {
+exports.getBirthday = function(birthday = '11-01') {
     let nowDay = new Date(Date.now()) // 当前时间戳
     let nowYear = new Date(Date.now()).getFullYear() // 当前年份
     let birth = nowYear + '-' + birthday // 生日："xx-xx"
