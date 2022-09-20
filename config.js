@@ -1,3 +1,4 @@
+// 用户相关信息配置
 const config = {
     APP_ID: "123abc",
     APP_SECRET: "123abc",
