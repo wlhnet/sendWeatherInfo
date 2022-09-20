@@ -1,7 +1,7 @@
 // 导入请求方法
 const { syncRequest } = require('./request')
 
-// 返回今天的年月日 (type: Object)
+// 返回今天的年月日 (return type: Object)
 exports.getToday = function() {
     const year = new Date(Date.now()).getFullYear()
     const month = new Date(Date.now()).getMonth()+1
@@ -12,20 +12,20 @@ exports.getToday = function() {
     }
 }
 
-// 返回今天星期几 (type: String)
+// 返回今天星期几 (return type: String)
 exports.getWeek = function() {
     const weekArr = ['日', '一', '二', '三', '四', '五', '六']
     let week = new Date(Date.now()).getDay()
     return `星期${weekArr[week]}`
 }
 
-// 请求随机语录-彩虹屁 (type: String)
+// 请求随机语录-彩虹屁 (return type: String)
 exports.getWords = function() {
     let res = syncRequest("https://api.shadiao.pro/chp", 'get')
     return res.data.text
 }
 
-// 请求天气信息 (type: Object)
+// 请求天气信息 (return type: Object)
 exports.getWeather = function(city = '长沙') {
     const cityURI =encodeURI(city); //city为中文需要转义
     let reqUrl = `https://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=${cityURI}`
@@ -39,7 +39,7 @@ exports.getWeather = function(city = '长沙') {
     }
 }
 
-// 返回随机16进制颜色 (type: String)
+// 返回随机16进制颜色 (return type: String)
 exports.getRandomColor = function() {
     let str = Math.floor(Math.random() * 16777216).toString(16);
     while (str.length < 6) {
@@ -48,7 +48,7 @@ exports.getRandomColor = function() {
     return '#' + str;
 }
 
-// 返回现在距离指定时间的天数 (type: Number)
+// 返回现在距离指定时间的天数 (return type: Number)
 exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11-01') {
     // startDateStr、endDateStr："xxxx-xx-xx"
     if(startDateStr && endDateStr) {
@@ -61,7 +61,7 @@ exports.handleDate = function(startDateStr = '2022-10-01', endDateStr = '2022-11
     }
 }
 
-// 返回距离生日天数 (type: Number)
+// 返回距离生日天数 (return type: Number)
 exports.getBirthday = function(birthday = '11-01') {
     let nowDay = new Date(Date.now()) // 当前时间戳
     let nowYear = new Date(Date.now()).getFullYear() // 当前年份
