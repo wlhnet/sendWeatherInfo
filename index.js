@@ -26,6 +26,7 @@ const {
 *  获取配置方法二：
 *  如果在github actions中运行，为了保护隐私将config中的信息存到github的机密中(当 config.FLAG 为 false 时)
 */
+// config.FLAG = true //config.FLAG 默认为false
 const today = getToday().format2
 const start_date = config.FLAG ? config.START_DATE : secrets.START_DATE
 const city = config.FLAG ? config.CITY : secrets.CITY
