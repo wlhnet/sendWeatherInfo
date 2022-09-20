@@ -1,12 +1,12 @@
 const config = {
-    APP_ID: "wx19338547890d2293",
-    APP_SECRET: "fe3db78218ea30b029945052bbd61c15",
-    CITY: "长沙", // 地级市（如："长沙"）
-    START_DATE: "2022-09-10",
-    BIRTHDAY1: "10-27",
-    BIRTHDAY2: "11-01",
-    USER_ID: "oOOM16JDzd0AGL9JpGUlQSJQCsIg",
-    TEMPLATE_ID: "CNKmWX1iQYh1A1xxS7mLctqeBIv5fM50zxgecVDs5jA",
+    APP_ID: "123abc",
+    APP_SECRET: "123abc",
+    CITY: "长沙",
+    START_DATE: "2022-08-22",
+    BIRTHDAY1: "NL/11-01",
+    BIRTHDAY2: "NL/11-01",
+    USER_ID: "123abc",
+    TEMPLATE_ID: "123abc",
 }
 module.exports = {
     ...config,
@@ -19,7 +19,7 @@ module.exports = {
     APP_SECRET: "String",
     CITY: "String", // 地级市（如："长沙"）
     START_DATE: "xxxx-xx-xx",
-    BIRTHDAY1: "xx-xx",
+    BIRTHDAY1: "NL/xx-xx", // 如果想填农历生日则用 "NL/xx-xx" 格式（如："NL/11-01"）
     BIRTHDAY2: "xx-xx",
     USER_ID: "String",
     TEMPLATE_ID: "String",
