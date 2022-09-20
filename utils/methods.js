@@ -82,4 +82,4 @@ let getBirthday = function (birthday = "11-01", isLunar = false) {
         result = parseInt(Math.abs(birthTime - nowDay) / (1000 * 60 * 60 * 24));
         return result > 0 ? result : '不足1' ;
     }
-};
+}
