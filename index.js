@@ -84,6 +84,7 @@ let templateData = {
 // 1、一定要先获取token再执行sendMessage
 const token = getToken(app_id, app_secret)
 // 2、推送主函数
+console.log(templateData)
 sendMessage(token, user_id, template_id, templateData)
 
 
