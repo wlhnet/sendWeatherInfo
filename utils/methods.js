@@ -35,7 +35,7 @@ exports.getWeather = function(city = '长沙') {
     let weather = data[0]
     return {
         weather: weather.wea, 
-        temperature: weather.temp + "℃", 
+        temperature: weather.tem + "℃", 
         temperature_low: weather.tem2 + "℃", 
         temperature_high: weather.tem1 + "℃"
     }
