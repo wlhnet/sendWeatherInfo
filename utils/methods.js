@@ -30,14 +30,24 @@ exports.getWords = function() {
 // 请求天气信息 (return type: Object)
 exports.getWeather = function(city = '长沙') {
     const cityURI =encodeURI(city); //city为中文需要转义
-    let reqUrl = `https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=${cityURI}`
-    let {data} = syncRequest(reqUrl, 'get')
-    let weather = data[0]
+    // const reqUrl = `https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=${cityURI}`
+    // let {data} = syncRequest(reqUrl, 'get')
+    // let weather = data[0]
+    // return {
+    //     weather: weather.wea, 
+    //     temperature: weather.tem + "℃", 
+    //     temperature_low: weather.tem2 + "℃", 
+    //     temperature_high: weather.tem1 + "℃"
+    // }
+    const getCityCode = `https://geoapi.qweather.com/v2/city/lookup?key=91beaa44e5c0407b9181a452962bbd05&location=${cityURI}&number=1`
+    let {location} = syncRequest(getCityCode, 'get')
+    const getWeather = `https://devapi.qweather.com/v7/weather/now?location=${location[0].id}&key=91beaa44e5c0407b9181a452962bbd05`
+    let {now} = syncRequest(getWeather, 'get')
     return {
-        weather: weather.wea, 
-        temperature: weather.tem + "℃", 
-        temperature_low: weather.tem2 + "℃", 
-        temperature_high: weather.tem1 + "℃"
+        weather: now.text, 
+        temperature: now.feelsLike + "℃", 
+        temperature_low: now.dew + "℃", 
+        temperature_high: now.temp + "℃"
     }
 }
 
