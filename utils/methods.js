@@ -39,15 +39,19 @@ exports.getWeather = function(city = '长沙') {
     //     temperature_low: weather.tem2 + "℃", 
     //     temperature_high: weather.tem1 + "℃"
     // }
-    const getCityCode = `https://geoapi.qweather.com/v2/city/lookup?key=91beaa44e5c0407b9181a452962bbd05&location=${cityURI}&number=1`
-    let {location} = syncRequest(getCityCode, 'get')
-    const getWeather = `https://devapi.qweather.com/v7/weather/now?location=${location[0].id}&key=91beaa44e5c0407b9181a452962bbd05`
-    let {now} = syncRequest(getWeather, 'get')
+    const getCityCode = `https://weather.cma.cn/api/autocomplete?q=${cityURI}`
+    let cityCodeData = syncRequest(getCityCode, 'get')
+    let cityCode = cityCodeData.data[0].split('|')[0]
+    const getWeather = `https://weather.cma.cn/api/weather/view?stationid=${cityCode}`
+    let {data} = syncRequest(getWeather, 'get')
+    const getNowWeather = `https://weather.cma.cn/api/now/${cityCode}`
+    let now = syncRequest(getNowWeather, 'get')
+    let weather = {...data.daily[0], ...now.data.now}
     return {
-        weather: now.text, 
-        temperature: now.feelsLike + "℃", 
-        temperature_low: now.dew + "℃", 
-        temperature_high: now.temp + "℃"
+        weather: weather.dayText, 
+        temperature: weather.temperature + "℃", 
+        temperature_low: weather.low + "℃", 
+        temperature_high: weather.high + "℃"
     }
 }
 
